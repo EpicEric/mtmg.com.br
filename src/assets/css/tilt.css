@@ -1,0 +1,28 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tilt-back {
+  width: 87vmin;
+  height: 87vmin;
+  will-change: transform;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
+  background-image: url('../images/logo-back.svg');
+  background-size: cover;
+}
+
+.tilt-front {
+  width: 100%;
+  height: 100%;
+  transform: translateZ(10vmin);
+  background-image: url('../images/logo-front.svg');
+  background-size: cover;
+}
