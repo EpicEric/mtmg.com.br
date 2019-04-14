@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "bulmaswatch": "^0.7.2",
+    "typewriter-effect": "^2.5.3",
     "vanilla-tilt": "^1.6.1"
   }
 }

@@ -22,25 +22,45 @@
   <!-- <link rel="icon" type="image/png" href="images/favicon.png"> -->
 
 </head>
+
 <body>
-
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class="columns">
-    <div class="column is-2"></div>
-    <div class="column">
-      <section id="enigma" class="section">
-        <h1 class="title is-1">Matemagincana 11 - Enigma</h1>
-        <hr>
-        <div class="content">
-          <p>Colocar um enigma <em>bem</em> legal aqui!</p>
+  <section class="hero is-dark is-fullheight">
+    <div class="hero-body is-primary">
+      <div class="container has-text-centered">
+        <div class="column is-10 is-offset-1">
+          <h3 class="title has-text-success" id="typewriter"></h3>
+          <div class="box">
+            <form id="enigma-form">
+              <div class="field">
+                <div class="control">
+                  <input class="input is-large" id="enigma-form-name" placeholder="Seu Nome" autofocus="">
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <input class="input is-large" id="enigma-form-code" placeholder="Código do Enigma">
+                </div>
+              </div>
+              <button type="submit" class="button is-block is-info is-large is-fullwidth">Verificar</button>
+              <span id="notification" class="has-text-left"></span>
+            </form>
+          </div>
+          <ul class="panel column is-10 is-offset-1">
+            <p class="panel-heading has-text-light">Dicas</p>
+            <p class="panel-block is-hover has-text-light">Onde a Matemagincana começa (4ª letra)</p>
+            <p class="panel-block has-text-light">Edição da Matemagincana do Fim do Mundo</p>
+            <p class="panel-block has-text-light">O que tem no meio do arco-íris</p>
+            <p class="panel-block has-text-light">Representante da direção (1ª letra)</p>
+            <p class="panel-block has-text-light">Se acontecer, não tem FUFEI (5ª letra)</p>
+            <p class="panel-block has-text-light">Foi demolida junto com o CEI (9ª letra)</p>
+            <p class="panel-block has-text-light">Número de mônions que ajudaram a organizar a primeira Matemagincana</p>
+            <p class="panel-block has-text-light">Penúltimo sobrenome de Mônica M. G. Torkomian (6ª letra)</p>
+            <p class="panel-block has-text-light">Sucede uma pergunta</p>
+          </ul>
         </div>
-      </section>
+      </div>
     </div>
-    <div class="column is-2"></div>
-  </div>
-
-<!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  </section>
 </body>
+
 </html>

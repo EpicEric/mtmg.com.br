@@ -1,6 +1,7 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'production',
@@ -38,6 +39,10 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   plugins: [
+    new webpack.DefinePlugin({
+      BACKEND_URL: JSON.stringify(process.env.BACKEND_URL || 'localhost:5000')
+    }),
+
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',
       chunkFilename: '[id].[hash].css'
