@@ -1,8 +1,15 @@
 const Typewriter = require('typewriter-effect/dist/core');
 import '../../node_modules/bulmaswatch/slate/bulmaswatch.min.css';
+import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only';
+const fetchPollyfill = require('whatwg-fetch').fetch as typeof window.fetch;
 
+/* Constants and declarations */
 declare const BACKEND_URL: string;
-const typewriterString = 'mtmg_enigma.exe';
+const typewriterString: string = 'mtmg_enigma.exe';
+const fetchTimeoutMs: number = 6000;
+
+/* Select fetch from polyfill or default accordingly */
+const abortableFetch = ('signal' in new Request('')) ? window.fetch : fetchPollyfill;
 
 /* Title typewriter */
 const typewriterElement = document.getElementById('typewriter');
@@ -29,6 +36,13 @@ interface EnigmaForm extends HTMLFormElement {
     }
 }
 
+/* Lowercase enforcement */
+document.getElementById('enigma-form-code').onkeyup = (event) => {
+    // event.preventDefault();
+    const target = event.target as HTMLInputElement;
+    target.value = target.value.toLowerCase();
+}
+
 /* Form validation */
 (document.getElementById('enigma-form') as HTMLFormElement).onsubmit = (event) => {
     event.preventDefault();
@@ -44,9 +58,15 @@ interface EnigmaForm extends HTMLFormElement {
     const bodyParams = new URLSearchParams();
     bodyParams.append('name', target['enigma-form-name'].value);
     bodyParams.append('secret', target['enigma-form-code'].value);
-    fetch(`${BACKEND_URL}/enigma`, {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    setTimeout(() => {
+        controller.abort();
+    }, fetchTimeoutMs);
+    abortableFetch(`${BACKEND_URL}/enigma`, {
         method: 'POST', 
-        body: bodyParams
+        body: bodyParams,
+        signal
     }).then((response) => {
         return response.json();
     }).then((data) => {
@@ -77,18 +97,13 @@ interface EnigmaForm extends HTMLFormElement {
         }
     }).catch((err) => {
         console.error(err);
+        button.classList.remove('is-loading');
+        notification.classList.add('has-text-danger');
         const notificationTypewriter = new Typewriter(notification, {
             loop: false,
             delay: 15
         });
-        const errorPrint = 'Ocorreu um erro! Verifique sua conexão e tente novamente...';
+        const errorPrint = 'Erro de conexão! O servidor está instável ou você não está conectado à Internet.';
         notificationTypewriter.typeString(errorPrint).start();
     });
 };
-
-/* Lowercase enforcement */
-document.getElementById('enigma-form-code').onkeyup = (event) => {
-    // event.preventDefault();
-    const target = event.target as HTMLInputElement;
-    target.value = target.value.toLowerCase();
-}
