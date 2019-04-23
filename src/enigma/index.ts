@@ -5,7 +5,7 @@ const fetchPollyfill = require('whatwg-fetch').fetch as typeof window.fetch;
 
 /* Constants and declarations */
 declare const BACKEND_URL: string;
-const typewriterString: string = 'mtmg_enigma.exe';
+const typewriterString: string = 'mtmg11_enigma.exe';
 const fetchTimeoutMs: number = 6000;
 
 /* Select fetch from polyfill or default accordingly */
@@ -40,7 +40,7 @@ interface EnigmaForm extends HTMLFormElement {
 document.getElementById('enigma-form-code').onkeyup = (event) => {
     // event.preventDefault();
     const target = event.target as HTMLInputElement;
-    target.value = target.value.toLowerCase();
+    target.value = target.value.toLowerCase().trim();
 }
 
 /* Form validation */
@@ -103,7 +103,7 @@ document.getElementById('enigma-form-code').onkeyup = (event) => {
             loop: false,
             delay: 15
         });
-        const errorPrint = 'Erro de conexão! O servidor está instável ou você não está conectado à Internet.';
+        const errorPrint = 'O servidor está instável ou você não está conectado à Internet. Tente novamente!';
         notificationTypewriter.typeString(errorPrint).start();
     });
 };
