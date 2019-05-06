@@ -7,7 +7,7 @@ module.exports = {
   mode: 'production',
   entry: {
     index: './src/index.ts',
-    enigma: './src/enigma/index.ts'
+    tafacil: './src/tafacil/index.ts'
   },
   module: {
     rules: [
@@ -56,12 +56,12 @@ module.exports = {
       chunks: ['index']
     }),
 
-    // Endpoint: mtmg.com.br/enigma
+    // Endpoint: mtmg.com.br/tafacil
     new HTMLWebpackPlugin({
-      title: 'Matemagincana 11 - Enigma',
-      template: 'src/enigma/index.html',
-      filename: 'enigma/index.html',
-      chunks: ['enigma']
+      title: 'Matemagincana 11 - ???',
+      template: 'src/tafacil/index.html',
+      filename: 'tafacil/index.html',
+      chunks: ['tafacil']
     })
   ]
 };
