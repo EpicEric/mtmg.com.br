@@ -1,5 +1,5 @@
 const Typewriter = require('typewriter-effect/dist/core');
-import '../../node_modules/bulmaswatch/slate/bulmaswatch.min.css';
+import '../../../node_modules/bulmaswatch/slate/bulmaswatch.min.css';
 import * as CryptoJS from 'crypto-js';
 
 /* Declarations and constants */

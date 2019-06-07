@@ -6,8 +6,7 @@ const webpack = require('webpack');
 module.exports = {
   mode: 'production',
   entry: {
-    index: './src/index.ts',
-    tafacil: './src/tafacil/index.ts'
+    index: './src/index.ts'
   },
   module: {
     rules: [
@@ -54,14 +53,6 @@ module.exports = {
       template: 'src/index.html',
       filename: 'index.html',
       chunks: ['index']
-    }),
-
-    // Endpoint: mtmg.com.br/tafacil
-    new HTMLWebpackPlugin({
-      title: 'Matemagincana 11 - ???',
-      template: 'src/tafacil/index.html',
-      filename: 'tafacil/index.html',
-      chunks: ['tafacil']
     })
   ]
 };
