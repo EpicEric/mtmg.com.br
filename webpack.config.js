@@ -6,7 +6,8 @@ const webpack = require('webpack');
 module.exports = {
   mode: 'production',
   entry: {
-    index: './src/index.ts'
+    index: './src/index.ts',
+    'minimat-senha': './src/minimat-senha/index.ts' 
   },
   module: {
     rules: [
@@ -53,6 +54,14 @@ module.exports = {
       template: 'src/index.html',
       filename: 'index.html',
       chunks: ['index']
-    })
+    }),
+
+    // Endpoint: mtmg.com.br/minimat-p3
+    new HTMLWebpackPlugin({
+      title: 'Minimatemagincana - Senha',
+      template: 'src/minimat-senha/index.html',
+      filename: 'minimat-senha/index.html',
+      chunks: ['minimat-senha']
+    }),
   ]
 };
