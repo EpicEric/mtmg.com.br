@@ -80,10 +80,11 @@ document.getElementById('ta-facil-form-date').onkeyup = (event) => {
 if (false) {
     const secretElement = document.getElementById('secret-html') as HTMLDivElement;
     if (secretElement) {
-        const message = secretElement.innerHTML;
-        const passphrase = '00000000'; // FIXME
+        const message = `<h3 class="title is-3 has-text-success">Pista resolvida!</h5><p>Vocês podem consultar a Internet para <em>esta</em> pista. ;)</p><hr><iframe frameborder="0" style="max-width: 400px; width: 100%;" height="200" src="https://drive.google.com/file/d/.../preview" />`;  // FIXME
+        const passphrase = '00000000';  // FIXME
         const encrypted = CryptoJS.AES.encrypt(message, passphrase).toString();
         const hmac = CryptoJS.HmacSHA256(encrypted, CryptoJS.SHA256(passphrase)).toString();
         console.log(hmac + encrypted);
+        document.getElementById('secret-encrypted').innerHTML = hmac + encrypted;
     }
 }
